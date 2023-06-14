@@ -21,29 +21,55 @@
 </ul>
 
 <!--
-   Add the *ngIf directive to the <div> that wraps 
+  Bind the HeroesComponent.selectedHero to the element's hero property like this.
+-->
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+<!--
+  It's a one-way data binding from the selectedHero property
+   of the HeroesComponent to the hero property of the target element, which maps to the hero property of the HeroDetailComponent.
+-->
+
+<!--
+
+Moved to hero-detail.component.html template
+
+<div *ngIf="selectedHero">
+
+  Add the *ngIf directive to the <div> that wraps 
     the hero details. This directive tells Angular to 
     render the section only when the selectedHero is 
     defined after it has been selected by clicking on a hero.
--->
 
-<div *ngIf="selectedHero">
   <h2>{{selectedHero.name | uppercase}} Details</h2>
   <div>id: {{selectedHero.id}}</div>
   <div>
     <label for="hero-name">Hero name: </label>
     <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-  </div>
-</div>
-
-<h2>{{hero.name | uppercase}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div>
-  <label for="name">Hero name: </label>
-  <input id="name" [(ngModel)]="hero.name" placeholder="name">
-  <!-- [(ngModel is ang two-way data binding sysntax
+    [(ngModel is ang two-way data binding sysntax
       data flows from the component class out to the screen and from the screen back to the class.
       Here it binds the hero.name property to the HTML text box so that data can flow in both 
       directions. Data can flow from the hero.name property to the text box and from the text box back to the hero.name.
-    )]-->
+    )]
+  </div>
 </div>
+
+-->
+
+
+<!--
+
+  What changed?
+As before, whenever a user clicks on a hero name, the hero detail appears below the hero list. Now the HeroDetailComponent is presenting those details instead of the HeroesComponent.
+
+Refactoring the original HeroesComponent into two components yields benefits, both now and in the future:
+
+You reduced the HeroesComponent responsibilities.
+
+You can evolve the HeroDetailComponent into a rich hero editor without touching the parent HeroesComponent.
+
+You can evolve the HeroesComponent without touching the hero detail view.
+
+You can re-use the HeroDetailComponent in the template of some future component.
+-->
