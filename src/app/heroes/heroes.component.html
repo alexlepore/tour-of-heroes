@@ -10,13 +10,9 @@
     -->
     <!--The parentheses around click tell Angular to listen for the <button> element's click event. When the user clicks in the <button>, Angular executes the onSelect(hero) expression.
       -->
-    <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
-      <!--
-        Angular's class binding can add and remove a CSS class conditionally
-      -->
-      <span class="badge">{{hero.id}}</span>
-      <span class="name">{{hero.name}}</span>
-    </button>
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
   </li>
 </ul>
 
@@ -24,7 +20,6 @@
   Bind the HeroesComponent.selectedHero to the element's hero property like this.
 -->
 
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
 
 <!--
   It's a one-way data binding from the selectedHero property

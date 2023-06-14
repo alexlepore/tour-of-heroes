@@ -1,3 +1,13 @@
 <h1>{{title}}</h1>
-<app-heroes></app-heroes>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+
+<router-outlet></router-outlet>
+<!-- 
+    The AppComponent template no longer needs <app-heroes> because the 
+        application only displays the HeroesComponent when the user navigates to it.
+        app-comp -> routeroutlet
+--> 
 <app-messages></app-messages>
