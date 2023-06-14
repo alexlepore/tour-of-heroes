@@ -1,6 +1,49 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <!--*ngFor is Angular's repeater directive. 
+    It repeats the host element for each element in a list.:-->
+  <li *ngFor="let hero of heroes">
+    <!--
+      <li>	The host element.
+        heroes	Holds the mock heroes list from the HeroesComponent class, the mock heroes list.
+        hero	Holds the current hero object for each iteration through the list.
+    -->
+    <!--The parentheses around click tell Angular to listen for the <button> element's click event. When the user clicks in the <button>, Angular executes the onSelect(hero) expression.
+      -->
+    <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
+      <!--
+        Angular's class binding can add and remove a CSS class conditionally
+      -->
+      <span class="badge">{{hero.id}}</span>
+      <span class="name">{{hero.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<!--
+   Add the *ngIf directive to the <div> that wraps 
+    the hero details. This directive tells Angular to 
+    render the section only when the selectedHero is 
+    defined after it has been selected by clicking on a hero.
+-->
+
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div>id: {{selectedHero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+  </div>
+</div>
+
 <h2>{{hero.name | uppercase}} Details</h2>
 <div><span>id: </span>{{hero.id}}</div>
 <div>
   <label for="name">Hero name: </label>
   <input id="name" [(ngModel)]="hero.name" placeholder="name">
+  <!-- [(ngModel is ang two-way data binding sysntax
+      data flows from the component class out to the screen and from the screen back to the class.
+      Here it binds the hero.name property to the HTML text box so that data can flow in both 
+      directions. Data can flow from the hero.name property to the text box and from the text box back to the hero.name.
+    )]-->
 </div>
