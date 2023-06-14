@@ -12,3 +12,5 @@ export class HeroDetailComponent {
   //<app-hero-detail [hero]="selectedHero"></app-hero-detail>
   @Input() hero?: Hero;
 }
+
+//
